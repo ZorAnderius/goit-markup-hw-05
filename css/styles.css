@@ -10,8 +10,11 @@
   --logo-border-color: #e7e9fc; /* logo-footer,btn border*/
   --customers-border-color: #8e8f99; /*customers border logo*/
   --footer-icon-activ-color: #31d0aa;
+  --modal-windows-bgr-color: #fcfcfc;
   --title-hero-weight: 500;
   --gap_between_img: 24px;
+  --time-duration: 250ms;
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -155,8 +158,8 @@ img {
   display: flex;
   flex-direction: column;
   transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
 }
 
 .header-item > .current-page {
@@ -206,8 +209,8 @@ img {
 .header-phone-link {
   color: var(--text-desc-color);
   transition-property: color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
 }
 
 /* .header-phone {
@@ -263,8 +266,8 @@ img {
   padding: 12px 0;
 
   transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
 }
 
 .hero-btn:hover,
@@ -407,8 +410,8 @@ img {
   justify-content: center;
   align-items: center;
   transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
 }
 
 .team-soc-icon {
@@ -449,9 +452,8 @@ img {
   color: var(--customers-border-color);
 
   transition-property: border-color, color;
-  transition-duration: 250ms, 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
-    cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time-duration), var(--time-duration);
+  transition-timing-function: var(--timing-function), var(--timing-function);
 }
 
 .customers-icon {
@@ -516,8 +518,8 @@ img {
   justify-content: center;
   align-items: center;
   transition-property: background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
 }
 .footer-soc-icon {
   fill: currentColor;
@@ -557,9 +559,10 @@ img {
   padding: 12px var(--gap_between_img);
 
   transition-property: background-color, color, box-shadow;
-  transition-duration: 250ms, 250ms, 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1),
-    cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time-duration), var(--time-duration),
+    var(--time-duration);
+  transition-timing-function: var(--timing-function), var(--timing-function),
+    var(--timing-function);
 }
 
 .main-portfolio-btn:hover,
@@ -585,7 +588,18 @@ img {
 }
 /* .project-item {
 } */
+.projects-link {
+  color: inherit;
+  display: inline-block;
+  transition-property: box-shadow;
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
+}
 
+.projects-link:is(:hover, :focus) {
+  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
+    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
 .image-text-wrap {
   position: relative;
   display: flex;
@@ -594,17 +608,16 @@ img {
 
 .text-wrap {
   position: absolute;
-  width: 100%;
   height: 100%;
+  padding: 40px 32px;
   background-color: var(--button-logo-color);
   transform: translateY(100%);
   transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
 }
 
 .project-text {
-  margin: 40px 32px auto 32px;
   color: var(--back-logo-color);
   overflow: auto;
 }
@@ -617,18 +630,6 @@ img {
   padding: 32px 0px;
   border: 1px solid #e7e9fc;
   border-top: none;
-}
-.projects-link {
-  color: inherit;
-  display: inline-block;
-  transition-property: box-shadow;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.projects-link:is(:hover, :focus) {
-  box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
-    0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
 
 /* .projects-image {
@@ -647,3 +648,75 @@ img {
 /* .footer-portfolio-wrapper{
 
 } */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 47, 66, 0.4);
+  transition-property: opacity, visibility;
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 408px;
+  min-height: 576px;
+  background-color: var(--modal-windows-bgr-color);
+  padding: var(--gap_between_img);
+
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transition-property: transform;
+  transition-duration: var(--time-duration);
+  transition-timing-function: var(--timing-function);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0);
+}
+
+.modal-btn-close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-left: auto;
+  width: var(--gap_between_img);
+  height: var(--gap_between_img);
+
+  background-color: #e7e9fc;
+  color: #000;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+
+  transition-property: color, background-color, border-color;
+  transition-duration: var(--time-duration), var(--time-duration),
+    var(--time-duration);
+  transition-timing-function: var(--timing-function), var(--timing-function),
+    var(--timing-function);
+}
+
+.modal-close-icon {
+  fill: currentColor;
+}
+
+.modal-btn-close:is(:hover, :focus) {
+  color: var(--hero-back-color);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}

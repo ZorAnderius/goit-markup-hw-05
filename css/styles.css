@@ -17,7 +17,6 @@
     --items: 4;
     --gap: 24px;
     --gap-nav: 40px;
-    --gap-footer: 120px;
     --gap-soc-footer: 16px;
 
     /* Margins */
@@ -452,19 +451,21 @@ img {
 /* #region Studio Footer */
 .footer-studio,
 .footer-portfolio{
+    width: 100%;
     background: var(--title-color);
-    padding: var(--pt-footer) 0 var(--pb-footer) 0;
+    padding-top: var(--pt-footer);
+    padding-bottom: var(--pb-footer);
 }
 
 .footer-studio .container,
 .footer-portfolio .container {
     display: flex;
     justify-content: flex-start;
-    gap: var(--gap-footer);
 }
 
 .footer-txt-wrap {
     max-width: 264px;
+    margin-right: 120px;
 }
 
 .footer-studio-logo,
@@ -485,6 +486,7 @@ img {
 
 .footer-soc-wrap {
     max-width: 208px;
+    margin-right: 80px;
 }
 
 .soc-desc {
@@ -521,6 +523,66 @@ img {
 
 .soc-icon {
     fill: currentColor;
+}
+
+.footer-subscribe-form {
+    display: flex;
+    gap: var(--gap);
+}
+
+.footer-email-input {
+    outline: none;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    border-radius: 4px;
+    min-width: 264px;
+    min-height: 40px;
+    padding: 8px 16px;
+    color: var(--back-hero-color);
+    font-size: 12px;
+    line-height: 2;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+.footer-email-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-email-input:hover,
+.footer-email-input:focus {
+    border-color: var(--accent-color);
+}
+
+.subscribe-btn {
+    min-width: 165px;
+    min-height: 40px;
+    background-color: var(--logo-btn-color);
+    border-color: var(--logo-btn-color);
+    border-radius: 4px;
+    color: var(--back-hero-color);
+    font-weight: 500;
+    font-size: inherit;
+    padding: 8px 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    transition-property: background-color, border-color;
+    transition-duration: var(--timing-duration);
+    transition-timing-function: var(--timing-function);
+}
+
+.send-btn-icon {
+    fill: currentColor;
+}
+
+.subscribe-btn:hover,
+.subscribe-btn:focus {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
 /* #endregion Studio Footer */
@@ -727,9 +789,7 @@ img {
     margin-bottom: var(--mb-soc-footer);
 }
 
-.modal-form {
-
-}
+/* .modal-form {} */
 
 .input-wrap {
     margin-bottom: 8px;

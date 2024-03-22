@@ -544,6 +544,9 @@ img {
     line-height: 2;
     letter-spacing: 0.04em;
     margin: 0;
+    transition-property: border-color;
+    transition-duration: var(--timing-duration);
+    transition-timing-function: var(--timing-function);
 }
 
 .footer-email-input::placeholder {
